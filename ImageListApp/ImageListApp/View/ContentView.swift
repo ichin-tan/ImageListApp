@@ -14,10 +14,18 @@ struct ContentView: View {
             Text("Loadded")
         }
         .onAppear() {
-            ApiManager.shared.fetchApiImages { result in
+            ApiManager.shared.fetchPhotosAPI { result in
                 switch result {
                 case .success(let arrPhotos):
                     print(arrPhotos.first?.author)
+                    // Test Core data
+                    
+                    if let photo = arrPhotos.first {
+                        CoreDataManager.shared.addPhoto(photo: photo)
+                        print(CoreDataManager.shared.getPhotos().count)
+                        print(CoreDataManager.shared.getPhotos().first?.author)
+                    }
+                    
                 case .failure(let error):
                     print(error.localizedDescription)
                 }

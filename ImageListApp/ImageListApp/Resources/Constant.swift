@@ -6,3 +6,4 @@
 //
 
 let APIURL = "https://picsum.photos/v2/list"
+let PHOTO_ENTITY = "PhotoEntity"

@@ -16,7 +16,7 @@ class ApiManager {
     
     //MARK: - Methods -
     
-    func fetchApiImages(completion: @escaping (Result<[PhotoItem], Error>) -> ()) {
+    func fetchPhotosAPI(completion: @escaping (Result<[PhotoItem], Error>) -> ()) {
         AF.request(APIURL)
             .validate()
             .responseDecodable(of: [PhotoItem].self,completionHandler: { response in
