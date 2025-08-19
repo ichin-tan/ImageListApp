@@ -76,7 +76,7 @@ class PhotosViewModel: ObservableObject {
         self.fetchSavedPhotosFromDB()
     }
     
-    private func isAlreadyInSavedPhotos(photo: PhotoItem) -> Bool {
+    func isAlreadyInSavedPhotos(photo: PhotoItem) -> Bool {
         return self.arrDbPhotos.contains(where: { $0.id == photo.id }) ? true : false
     }
     
