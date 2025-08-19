@@ -18,7 +18,7 @@ extension PhotoEntity {
 
     @NSManaged public var id: String
     @NSManaged public var author: String?
-    @NSManaged public var url: String?
+    @NSManaged public var download_url: String?
 
 }
 

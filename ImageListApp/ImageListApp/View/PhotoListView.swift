@@ -13,27 +13,29 @@ struct PhotoListView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
+            VStack(spacing: 10) {
                 
                 if viewModel.arrDbPhotos.isEmpty {
-                    VStack(spacing: 12) {
+                    VStack(spacing: 10) {
                         Text("No data available!")
                             .foregroundColor(.white)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color(red: 0.08, green: 0.08, blue: 0.09))
+                    .background(Color.init("BackgroundColor"))
                     
                 } else {
                     List {
                         ForEach(viewModel.arrDbPhotos) { photo in
-                            Text(photo.author ?? "")
-                                .listRowBackground(Color(red: 0.08, green: 0.08, blue: 0.09))
+                            PhotoRowView(author: photo.author ?? "Unknown", url: photo.download_url ?? "")
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .listRowBackground(Color.clear)
+                                .padding(.vertical, 5)
                         }
                     }
                     .scrollContentBackground(.hidden)
-                    .background(Color(red: 0.08, green: 0.08, blue: 0.09))
+                    .listStyle(.plain)
+                    .background(Color.init("BackgroundColor"))
                     .listRowSeparator(.hidden)
-                    .listRowInsets(EdgeInsets(top: 15, leading: 15, bottom: 15, trailing: 15))
                 }
                 
                 Button {
@@ -51,14 +53,14 @@ struct PhotoListView: View {
                     }
                 }
                 .padding(.vertical, 15)
-                .background(viewModel.isApiLoading ? Color.gray.opacity(0.5) : Color(red: 0.18, green: 0.45, blue: 0.97))
+                .background(viewModel.isApiLoading ? Color.gray.opacity(0.5) : Color.init("ButtonColor"))
                 .foregroundColor(.white)
                 .cornerRadius(15)
                 .disabled(viewModel.isApiLoading)
             }
             .padding(.horizontal, 20)
             .padding(.bottom, 20)
-            .background(Color(red: 0.08, green: 0.08, blue: 0.09))
+            .background(Color.init("BackgroundColor"))
             .navigationTitle("Saved Photos")
             .preferredColorScheme(.dark)
             .alert(isPresented: $viewModel.isShowErrorAlert) {

@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23605" systemVersion="24G84" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="PhotoEntity" representedClassName="PhotoEntity" syncable="YES">
         <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="download_url" optional="YES" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
-        <attribute name="url" optional="YES" attributeType="String"/>
     </entity>
 </model>

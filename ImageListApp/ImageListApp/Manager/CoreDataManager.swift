@@ -44,7 +44,7 @@ class CoreDataManager {
         let photoEntity = PhotoEntity(context: self.context)
         photoEntity.id = photo.id
         photoEntity.author = photo.author
-        photoEntity.url = photo.url
+        photoEntity.download_url = photo.download_url
         self.saveDB()
     }
 }

@@ -50,6 +50,11 @@ class PhotosViewModel: ObservableObject {
     
     func addRandomPhotoToSavedPhotos() {
         guard let randomPhoto = self.arrApiPhotos.randomElement() else {
+            if(self.arrApiPhotos.isEmpty) {
+                self.fetchAllPhotosFromApi()
+            }
+            self.isShowErrorAlert = true
+            self.errMessage = "There was some problem fetching the data from Api! Please try again."
             return
         }
         if(self.isAlreadyInSavedPhotos(photo: randomPhoto)) {
