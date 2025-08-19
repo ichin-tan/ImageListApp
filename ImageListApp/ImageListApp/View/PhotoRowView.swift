@@ -12,7 +12,7 @@ struct PhotoRowView: View {
     let url: String
     
     var body: some View {
-        HStack(spacing: 10) {
+        HStack(spacing: 15) {
             AsyncImage(url: URL(string: url)) { phase in
                 switch phase {
                 case .empty:

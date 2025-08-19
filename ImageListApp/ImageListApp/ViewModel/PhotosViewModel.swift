@@ -65,6 +65,7 @@ class PhotosViewModel: ObservableObject {
                 self.addRandomPhotoToSavedPhotos()
             }
         } else {
+            randomPhoto.order = self.arrDbPhotos.count
             CoreDataManager.shared.add(photo: randomPhoto)
             self.fetchSavedPhotosFromDB()
         }
@@ -77,5 +78,10 @@ class PhotosViewModel: ObservableObject {
     
     private func isAlreadyInSavedPhotos(photo: PhotoItem) -> Bool {
         return self.arrDbPhotos.contains(where: { $0.id == photo.id }) ? true : false
+    }
+    
+    func reorderPhoto(from source: IndexSet, to destination: Int) {
+        self.arrDbPhotos.move(fromOffsets: source, toOffset: destination)
+        CoreDataManager.shared.updatePhotoOrder(photos: arrDbPhotos)
     }
 }

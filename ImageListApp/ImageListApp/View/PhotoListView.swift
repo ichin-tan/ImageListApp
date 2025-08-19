@@ -42,6 +42,7 @@ struct PhotoListView: View {
                                     .tint(.red)
                                 }
                         }
+                        .onMove(perform: self.viewModel.reorderPhoto)
                     }
                     .scrollContentBackground(.hidden)
                     .listStyle(.plain)
@@ -88,6 +89,12 @@ struct PhotoListView: View {
                 }
             } message: {
                 Text("Are you sure you want to delete this favorite?")
+            }
+            .toolbar {
+                if !self.viewModel.arrDbPhotos.isEmpty {
+                    EditButton()
+                        .tint(.white)
+                }
             }
         }
     }

@@ -12,6 +12,7 @@ class PhotoItem: Codable, Identifiable {
     let id: String
     let author: String
     let download_url: String
+    var order: Int? = nil
 }
 
 

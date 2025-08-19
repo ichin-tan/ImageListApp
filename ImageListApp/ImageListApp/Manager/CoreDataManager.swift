@@ -14,7 +14,7 @@ class CoreDataManager {
     static let shared = CoreDataManager()
     let container: NSPersistentContainer
     var context: NSManagedObjectContext { container.viewContext }
-        
+    
     //MARK: - Initializer -
     
     private init() {
@@ -36,6 +36,8 @@ class CoreDataManager {
     
     func getPhotos() -> [PhotoEntity] {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: PHOTO_ENTITY)
+        let sortDescriptor = NSSortDescriptor(key: "order", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
         let arrPhotos = try? self.context.fetch(fetchRequest) as? [PhotoEntity]
         return arrPhotos ?? []
     }
@@ -45,11 +47,19 @@ class CoreDataManager {
         photoEntity.id = photo.id
         photoEntity.author = photo.author
         photoEntity.download_url = photo.download_url
+        photoEntity.order = Int64(photo.order ?? 0)
         self.saveDB()
     }
     
     func delete(photo: PhotoEntity) {
         self.context.delete(photo)
+        self.saveDB()
+    }
+    
+    func updatePhotoOrder(photos: [PhotoEntity]) {
+        for (index, photo) in photos.enumerated() {
+            photo.order = Int64(index)
+        }
         self.saveDB()
     }
 }
