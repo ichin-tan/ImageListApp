@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		723BE2392E54D0C800C4A1BF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 723BE2382E54D0C800C4A1BF /* Alamofire */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		723BE1FC2E54CEE100C4A1BF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				723BE2392E54D0C800C4A1BF /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = ImageListApp;
 			packageProductDependencies = (
+				723BE2382E54D0C800C4A1BF /* Alamofire */,
 			);
 			productName = ImageListApp;
 			productReference = 723BE1E62E54CEDE00C4A1BF /* ImageListApp.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 723BE1DD2E54CEDE00C4A1BF;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				723BE2372E54D0C800C4A1BF /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 723BE1E72E54CEDE00C4A1BF /* Products */;
 			projectDirPath = "";
@@ -558,6 +567,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		723BE2372E54D0C800C4A1BF /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		723BE2382E54D0C800C4A1BF /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 723BE2372E54D0C800C4A1BF /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 723BE1DE2E54CEDE00C4A1BF /* Project object */;
 }
