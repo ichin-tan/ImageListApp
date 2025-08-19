@@ -12,7 +12,7 @@ struct ImageListAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PhotoListView()
         }
     }
 }

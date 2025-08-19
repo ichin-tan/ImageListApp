@@ -16,7 +16,7 @@ extension PhotoEntity {
         return NSFetchRequest<PhotoEntity>(entityName: "PhotoEntity")
     }
 
-    @NSManaged public var id: String?
+    @NSManaged public var id: String
     @NSManaged public var author: String?
     @NSManaged public var url: String?
 
