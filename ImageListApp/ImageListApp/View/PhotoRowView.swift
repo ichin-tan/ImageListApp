@@ -16,9 +16,11 @@ struct PhotoRowView: View {
             AsyncImage(url: URL(string: url)) { phase in
                 switch phase {
                 case .empty:
-                    ProgressView()
+                    Image(systemName: "photo")
                         .frame(width: 70, height: 70)
-                    
+                        .background(Color.gray)
+                        .cornerRadius(15)
+
                 case .success(let image):
                     image
                         .resizable()
