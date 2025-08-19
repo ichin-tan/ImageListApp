@@ -40,11 +40,16 @@ class CoreDataManager {
         return arrPhotos ?? []
     }
     
-    func addPhoto(photo: PhotoItem) {
+    func add(photo: PhotoItem) {
         let photoEntity = PhotoEntity(context: self.context)
         photoEntity.id = photo.id
         photoEntity.author = photo.author
         photoEntity.download_url = photo.download_url
+        self.saveDB()
+    }
+    
+    func delete(photo: PhotoEntity) {
+        self.context.delete(photo)
         self.saveDB()
     }
 }

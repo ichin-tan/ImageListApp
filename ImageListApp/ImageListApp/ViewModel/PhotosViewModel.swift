@@ -65,9 +65,14 @@ class PhotosViewModel: ObservableObject {
                 self.addRandomPhotoToSavedPhotos()
             }
         } else {
-            CoreDataManager.shared.addPhoto(photo: randomPhoto)
+            CoreDataManager.shared.add(photo: randomPhoto)
             self.fetchSavedPhotosFromDB()
         }
+    }
+    
+    func deletePhotoFromSavedPhotos(photo: PhotoEntity) {
+        CoreDataManager.shared.delete(photo: photo)
+        self.fetchSavedPhotosFromDB()
     }
     
     private func isAlreadyInSavedPhotos(photo: PhotoItem) -> Bool {

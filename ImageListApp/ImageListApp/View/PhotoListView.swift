@@ -10,6 +10,8 @@ import SwiftUI
 struct PhotoListView: View {
     
     @StateObject var viewModel = PhotosViewModel()
+    @State private var photoToDelete: PhotoEntity?
+    @State private var showDeleteAlert = false
     
     var body: some View {
         NavigationStack {
@@ -30,6 +32,15 @@ struct PhotoListView: View {
                                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                 .listRowBackground(Color.clear)
                                 .padding(.vertical, 5)
+                                .swipeActions {
+                                    Button(role: .destructive) {
+                                        self.photoToDelete = photo
+                                        showDeleteAlert = true
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
+                                    .tint(.red)
+                                }
                         }
                     }
                     .scrollContentBackground(.hidden)
@@ -67,6 +78,16 @@ struct PhotoListView: View {
                 Alert(title: Text("ImageListApp"), message: Text("\(self.viewModel.errMessage ?? "Some error occured!")"),dismissButton: .default(Text("OK"), action: {
                     print("Alert dismissed!")
                 }))
+            }
+            .alert("Confirm Delete", isPresented: $showDeleteAlert) {
+                Button("Cancel", role: .cancel) { }
+                Button("Delete", role: .destructive) {
+                    if let photo = self.photoToDelete {
+                        self.viewModel.deletePhotoFromSavedPhotos(photo: photo)
+                    }
+                }
+            } message: {
+                Text("Are you sure you want to delete this favorite?")
             }
         }
     }
